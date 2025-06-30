@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhi Mahesh Mulewar - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --dark: #2F2E41;
+            --light: #F8F9FA;
+            --accent: #4D8BFF;
+            --text: #333333;
+            --bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 5%;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(255, 101, 132, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, rgba(108, 99, 255, 0) 70%);
+            top: -150px;
+            right: -150px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--secondary) 0%, rgba(255, 101, 132, 0) 70%);
+            bottom: -200px;
+            left: -200px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .hero p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 101, 132, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(108, 99, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary);
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .education-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p {
+            color: #666;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background-color: var(--light);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .project-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .projects-section {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.projects-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* equal spacing between cards */
+  flex-wrap: wrap; /* makes it responsive */
+  margin-top: 20px;
+}
+
+.project-card {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.achievements-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.achievement-card {
+  background-color: #fff;
+  padding: 20px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Modal Style */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.modal-image {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #fff;
+}
+.icon-img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.achievements-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.achievement-card {
+  width: 400px;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.achievements-section h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.achievement-card:hover {
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+
+
+        /* Experience Section */
+        .experience-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+            left: 1rem;
+            top: 0;
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+            left: 0.5rem;
+            top: 0.3rem;
+        }
+
+        .experience-date {
+            min-width: 120px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-content h4 {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            width: 250px;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            width: 100%;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 4rem;
+                height: auto;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-section {
+                flex-direction: column;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s;
+                z-index: 999;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>SiddhiMulewar</span>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Siddhi Mahesh Mulewar</span></h1>
+            <h2>UI/UX Designer & Data Science Enthusiast</h2>
+            <p>I create intuitive user experiences and data-driven solutions that drive client success and organizational growth. Currently pursuing B.Tech in Electronics and Telecommunication Engineering at MIT Academy of Engineering, Pune.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="profsid.jpeg" alt="Siddhi Mahesh Mulewar" class="profile-img">
+        </div>
+    </section>
+
+    <section id="about" class="about-section fade-in">
+        <div class="about-content">
+            <h2 class="section-title"><span>About Me</span></h2>
+            <p>I'm a passionate technologist with expertise in UI/UX design and data science. My goal is to leverage my skills to create intuitive user experiences and data-driven solutions that drive client success and organizational growth.</p>
+            
+            <h3>Education</h3>
+            <div class="education-item">
+                <h4>MIT Academy of Engineering, Pune</h4>
+                <p>B.Tech. - Electronics and Telecommunication Engineering (2021 - 2025)</p>
+                <p>CGPA: 8.56 / 10</p>
+            </div>
+            <div class="education-item">
+                <h4>Wani Public School and Junior College, Wani</h4>
+                <p>12th - MSBSHSE (2021)</p>
+                <p>Percentage: 89.83 / 100</p>
+            </div>
+            <div class="education-item">
+                <h4>Wani Lions English Medium High School & Junior College, Wani</h4>
+                <p>10th - MSBSHSE (2019)</p>
+                <p>Percentage: 87.60 / 100</p>
+            </div>
+        </div>
+        <div class="about-image">
+            <img src="phtooo.jpeg" alt="Siddhi Mulewar" class="profile-img">
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in">
+        <h2 class="section-title"><span>Key Expertise</span></h2>
+        <div class="skills-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Data Science</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Interpersonal Skills</span>
+            <span class="skill-tag">Research</span>
+            <span class="skill-tag">Marketing</span>
+            <span class="skill-tag">Data Collection</span>
+            <span class="skill-tag">Data Preprocessing</span>
+            <span class="skill-tag">Data Analysis</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Tensorflow</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">CNN</span>
+            <span class="skill-tag">KNN</span>
+            <span class="skill-tag">LSTM</span>
+            <span class="skill-tag">ResNext</span>
+            <span class="skill-tag">User Research</span>
+            <span class="skill-tag">Wireframing</span>
+            <span class="skill-tag">Prototyping</span>
+            <span class="skill-tag">User Interface Design</span>
+            <span class="skill-tag">Usability Testing</span>
+            <span class="skill-tag">Content Organization</span>
+            <span class="skill-tag">Responsive Design</span>
+            <span class="skill-tag">Figma</span>
+        </div>
+    </section>
+
+    <section id="experience" class="fade-in">
+        <h2 class="section-title"><span>Experience</span></h2>
+        
+        <div class="experience-item">
+            <div class="experience-date">Sep 2023 - Nov 2023</div>
+            <div class="experience-content">
+                <h3>Ojsant Technologies Pvt Ltd</h3>
+                <h4>UI/UX & Research Intern</h4>
+                <p>Focused on development of UI for the application, conducted data research, organized investment information, and analyzed startup trends.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Research</span>
+                    <span class="project-tag">Marketing</span>
+                    <span class="project-tag">UI/UX</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-date">Sep 2023 - Nov 2023</div>
+            <div class="experience-content">
+                <h3>AICTE</h3>
+                <h4>Data Analytics Process Automation Virtual Intern</h4>
+                <p>Took the helm of the Data Analytics project at AICTE, meticulously collecting and analyzing data on technical education. Implemented streamlined processes for organizing data, identifying patterns, and generating insightful reports.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Data Collection</span>
+                    <span class="project-tag">Data Preprocessing</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Data Analysis</span>
+                    <span class="project-tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+
+         <div class="experience-item">
+            <div class="experience-date">Jan 202 - May 2025</div>
+            <div class="experience-content">
+                <h3>Endava Solutions</h3>
+                <h4>Associate Developer Intern</h4>
+                <p>To design, develop, and test software applications , gaining hands-on experience.</p>
+                <div class="project-tags">
+                    <span class="project-tag">HTML</span>
+                    <span class="project-tag">CSS</span>
+                    <span class="project-tag">Javascript</span>
+                    <span class="project-tag">Java</span>
+                    <span class="project-tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section fade-in">
+        <h2 class="section-title"><span>Projects</span></h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="fashionrecommender.jpeg" alt="AI based Fashion Recommender System">
+                </div>
+                <div class="project-info">
+                    <h3>AI based Fashion Recommender System</h3>
+                    <p>Led the development of the AI-based Fashion Recommender System enhancing user experience and sales. Utilized ML algorithms to analyze preferences and trends, resulting in increased engagement.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Tensorflow</span>
+                        <span class="project-tag">Keras</span>
+                        <span class="project-tag">CNN</span>
+                        <span class="project-tag">KNN</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="Deepfake-Detection-Techniques.jpg" alt="DeepFake Face Detection">
+                </div>
+                <div class="project-info">
+                    <h3>DeepFake Face Detection using LSTM and ResNext</h3>
+                    <p>Developed DeepFake Face Detection system using LSTM and ResNext architectures to detect manipulated facial images. Utilized LSTM for temporal analysis of facial expressions and ResNext for feature extraction.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">LSTM</span>
+                        <span class="project-tag">ResNext</span>
+                        <span class="project-tag">Deep Learning</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="online-learning.jpg" alt="Online Learning Platform">
+                </div>
+                <div class="project-info">
+                    <h3>Online Learning Platform UI/UX Design</h3>
+                    <p>Designed an intuitive Online Learning Platform, using Figma to create wireframes, prototypes, and a responsive UI. Conducted user research and usability testing to enhance content organization and user engagement.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Figma</span>
+                        <span class="project-tag">User Research</span>
+                        <span class="project-tag">Wireframing</span>
+                        <span class="project-tag">Prototyping</span>
+                        <span class="project-tag">UI Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="achievements-section">
+  <h2>Achievements</h2>
+  <div class="achievements-container">
+    <!-- Achievement 1 -->
+    <div class="achievement-card" onclick="openModal('modal1')">
+      <img src="trophy.png" alt="Trophy Icon" class="icon" />
+      <h3>Marketing Maestro Winner</h3>
+      <p>Winner of Marketing Maestro held by E-cell MITAOE (Team Leader)</p>
+    </div>
+
+    <!-- Achievement 2 -->
+    <div class="achievement-card" onclick="openModal('modal2')">
+      <img src="gold-medal.png" alt="Medal Icon" class="icon" />
+      <h3>Debate Competition Runner Up</h3>
+      <p>Second Runner Up of Debate Competition held by Literary Club, MITAOE</p>
+    </div>
+
+    <!-- Achievement 3 -->
+    <div class="achievement-card" onclick="openModal('modal3')">
+      <img src="medal.png" alt="Badge Icon" class="icon" />
+      <h3>Leadership Roles</h3>
+      <p>Outreach Team Lead & Documentation Lead at EDC, MITAOE</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 1 -->
+<div id="modal1" class="modal" onclick="closeModal('modal1')">
+  <img src="marketing.jpeg" class="modal-image" />
+</div>
+
+<!-- Modal 2 -->
+<div id="modal2" class="modal" onclick="closeModal('modal2')">
+  <img src="debate.jpeg" class="modal-image" />
+</div>
+
+<!-- Modal 3 -->
+<div id="modal3" class="modal" onclick="closeModal('modal3')">
+  <img src="ecell.jpeg" class="modal-image" />
+</div>
+
+    <section id="contact" class="contact-section fade-in">
+        <h2 class="section-title"><span>Get In Touch</span></h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>siddhi.mulewar@mitaoe.ac.in</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+91-9112075559</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Pune, Maharashtra, India - 412105</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-laptop-code"></i> SiddhiMulewar
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Siddhi Mahesh Mulewar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize elements as invisible
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+
+        
+  
+  function openModal(id) {
+    document.getElementById(id).classList.add("show");
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove("show");
+  }
+
+    </script>
+
+    
+</body>
+</html>
